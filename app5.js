@@ -17,6 +17,16 @@ app.get("/keiyo", (req, res) => {
   res.render('db2', { data: station });
 });
 
+app.get("/keiyo_add", (req, res) => {
+  let id = req.query.id;
+  let code = req.query.code;
+  let name = req.query.name;
+  let newdata = { id: id, code: code, name: name };
+  station.push( newdata );
+  //res.redirect('/public/keiyo_add.html');//無限登録
+  res.render('db2', { data: station });//一覧表示
+});
+
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
   const message2 = "Bon jour";
